@@ -138,7 +138,7 @@ class UploadHandler {
         if($file['error']) {
             return array('error' => 'Upload Error #'.$file['error']);
         }
-        	
+
         // Validate name
         if ($name === null || $name === ''){
             return array('error' => 'File name empty.');
@@ -163,10 +163,10 @@ class UploadHandler {
         }
 
         // Save a chunk
-        $totalParts = isset($_REQUEST['qqtotalparts']) ? (int)$_REQUEST['qqtotalparts'] : 1;
+        $totalParts = isset($_REQUEST['qqtotalparts']) ? (int)$_REQUEST['qqtotalparts'] : 0;
 
         $uuid = $_REQUEST['qquuid'];
-        if ($totalParts > 1){
+        if ($totalParts > 0){
         # chunked upload
 
             $chunksFolder = $this->chunksFolder;
